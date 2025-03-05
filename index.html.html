@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cacau Show - Pesquisa</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .survey-container {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .survey-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .survey-header img {
+      width: 100px;
+      margin-right: 20px;
+    }
+
+    .survey-title h1 {
+      color: #5c1e1a;
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .survey-step {
+      display: none; /* Inicialmente oculto */
+    }
+
+    .survey-step.active {
+      display: block; /* Mostra o passo ativo */
+    }
+
+    .survey-question {
+      margin-bottom: 20px;
+    }
+
+    .survey-question h3 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .survey-question label {
+      display: block;
+      margin-bottom: 10px;
+      color: #666;
+    }
+
+    .survey-question input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    .survey-navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+
+    .btn-prev, .btn-next, .btn-submit {
+      background-color: #8B2A19;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-prev:hover, .btn-next:hover, .btn-submit:hover {
+      background-color: #6b2014;
+    }
+
+    .btn-prev {
+      background-color: #f1f1f1;
+      color: #333;
+    }
+
+    .btn-prev:hover {
+      background-color: #e1e1e1;
+    }
+
+    .result-message {
+      text-align: center;
+      font-size: 18px;
+      color: #333;
+      margin-top: 20px;
+      display: none; /* Inicialmente oculto */
+    }
+
+    .result-message h2 {
+      color: #5c1e1a;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .btn-home {
+      background-color: #8B2A19;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .btn-home:hover {
+      background-color: #6b2014;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top-header">
+      <div class="container">
+        <div class="top-links">
+          <a href="#">SEJA UM REVENDEDOR</a>
+          <a href="#">SEJA UM FRANQUEADO</a>
+          <a href="#">ÁREA PARA EMPRESAS</a>
+          <a href="#">TRABALHE CONOSCO</a>
+          <a href="#">NOSSOS HOTÉIS</a>
+          <a href="#">CACAU PARK</a>
+        </div>
+        <div class="top-buttons">
+          <a href="#"><i class="fas fa-map-marker-alt"></i> ENCONTRE UMA LOJA</a>
+          <a href="#"><i class="fas fa-gift"></i> VALE PRESENTE</a>
+        </div>
+      </div>
+    </div>
+    <div class="main-header">
+      <div class="container">
+        <div class="logo">
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar Produto">
+          <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="user-actions">
+          <button class="btn-login"><i class="fas fa-user-circle"></i> ENTRAR</button>
+          <div class="location">
+            <span>Cacau Show - SP</span>
+            <a href="#">ALTERAR</a>
+          </div>
+          <div class="cart">
+            <a href="#"><i class="fas fa-shopping-bag"></i></a>
+            <span class="cart-count">1</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="survey-container">
+      <div class="survey-header">
+        <img src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwe40064b2/large/1003499_5.png" alt="Ovo de Páscoa Chef Pistache 600g">
+        <div class="survey-title">
+          <h1>Pesquisa Cacau Show</h1>
+          <p>Responda às perguntas e concorra a um Ovo de Páscoa!</p>
+        </div>
+      </div>
+
+      <!-- Passo 1 -->
+      <div class="survey-step active" id="step1">
+        <div class="survey-question">
+          <h3>1. Qual é o seu produto favorito da Cacau Show?</h3>
+          <label><input type="radio" name="q1" value="a"> Ovos de Páscoa</label>
+          <label><input type="radio" name="q1" value="b"> Trufas</label>
+          <label><input type="radio" name="q1" value="c"> Barras de chocolate</label>
+          <label><input type="radio" name="q1" value="d"> Bombons</label>
+        </div>
+        <div class="survey-navigation">
+          <button class="btn-next" onclick="nextStep(2)">Próximo</button>
+        </div>
+      </div>
+
+      <!-- Passo 2 -->
+      <div class="survey-step" id="step2">
+        <div class="survey-question">
+          <h3>2. Com que frequência você compra produtos da Cacau Show?</h3>
+          <label><input type="radio" name="q2" value="a"> Semanalmente</label>
+          <label><input type="radio" name="q2" value="b"> Mensalmente</label>
+          <label><input type="radio" name="q2" value="c"> Raramente</label>
+          <label><input type="radio" name="q2" value="d"> Nunca</label>
+        </div>
+        <div class="survey-navigation">
+          <button class="btn-prev" onclick="prevStep(1)">Voltar</button>
+          <button class="btn-next" onclick="nextStep(3)">Próximo</button>
+        </div>
+      </div>
+
+      <!-- Passo 3 -->
+      <div class="survey-step" id="step3">
+        <div class="survey-question">
+          <h3>3. Qual é o seu ovo de Páscoa favorito da Cacau Show?</h3>
+          <label><input type="radio" name="q3" value="a"> Ovo de Chocolate ao Leite</label>
+          <label><input type="radio" name="q3" value="b"> Ovo de Chocolate Branco</label>
+          <label><input type="radio" name="q3" value="c"> Ovo de Chocolate Amargo</label>
+          <label><input type="radio" name="q3" value="d"> Ovo de Chocolate com Avelã</label>
+        </div>
+        <div class="survey-navigation">
+          <button class="btn-prev" onclick="prevStep(2)">Voltar</button>
+          <button class="btn-next" onclick="nextStep(4)">Próximo</button>
+        </div>
+      </div>
+
+      <!-- Passo 4 -->
+      <div class="survey-step" id="step4">
+        <div class="survey-question">
+          <h3>4. O que mais te atrai na Cacau Show?</h3>
+          <label><input type="radio" name="q4" value="a"> Qualidade dos produtos</label>
+          <label><input type="radio" name="q4" value="b"> Variedade de sabores</label>
+          <label><input type="radio" name="q4" value="c"> Preços acessíveis</label>
+          <label><input type="radio" name="q4" value="d"> Atendimento</label>
+        </div>
+        <div class="survey-navigation">
+          <button class="btn-prev" onclick="prevStep(3)">Voltar</button>
+          <button class="btn-next" onclick="nextStep(5)">Próximo</button>
+        </div>
+      </div>
+
+      <!-- Passo 5 -->
+      <div class="survey-step" id="step5">
+        <div class="survey-question">
+          <h3>5. Você já participou de uma promoção da Cacau Show?</h3>
+          <label><input type="radio" name="q5" value="a"> Sim</label>
+          <label><input type="radio" name="q5" value="b"> Não</label>
+        </div>
+        <div class="survey-navigation">
+          <button class="btn-prev" onclick="prevStep(4)">Voltar</button>
+          <button class="btn-next" onclick="nextStep(6)">Próximo</button>
+        </div>
+      </div>
+
+      <!-- Passo 6 -->
+      <div class="survey-step" id="step6">
+        <div class="survey-question">
+          <h3>6. Qual é o seu chocolate preferido?</h3>
+          <label><input type="radio" name="q6" value="a"> Ao leite</label>
+          <label><input type="radio" name="q6" value="b"> Branco</label>
+          <label><input type="radio" name="q6" value="c"> Amargo</label>
+          <label><input type="radio" name="q6" value="d"> Com recheio</label>
+        </div>
+        <div class="survey-navigation">
+          <button class="btn-prev" onclick="prevStep(5)">Voltar</button>
+          <button class="btn-next" onclick="nextStep(7)">Próximo</button>
+        </div>
+      </div>
+
+      <!-- Passo 7 -->
+      <div class="survey-step" id="step7">
+        <div class="survey-question">
+          <h3>7. Você já visitou uma loja física da Cacau Show?</h3>
+          <label><input type="radio" name="q7" value="a"> Sim</label>
+          <label><input type="radio" name="q7" value="b"> Não</label>
+        </div>
+        <div class="survey-navigation">
+          <button class="btn-prev" onclick="prevStep(6)">Voltar</button>
+          <button class="btn-next" onclick="nextStep(8)">Próximo</button>
+        </div>
+      </div>
+
+      <!-- Passo 8 -->
+      <div class="survey-step" id="step8">
+        <div class="survey-question">
+          <h3>8. Qual é a sua experiência com o atendimento da Cacau Show?</h3>
+          <label><input type="radio" name="q8" value="a"> Excelente</label>
+          <label><input type="radio" name="q8" value="b"> Boa</label>
+          <label><input type="radio" name="q8" value="c"> Regular</label>
+          <label><input type="radio" name="q8" value="d"> Ruim</label>
+        </div>
+        <div class="survey-navigation">
+          <button class="btn-prev" onclick="prevStep(7)">Voltar</button>
+          <button class="btn-next" onclick="nextStep(9)">Próximo</button>
+        </div>
+      </div>
+
+      <!-- Passo 9 -->
+      <div class="survey-step" id="step9">
+        <div class="survey-question">
+          <h3>9. Você recomenda a Cacau Show para amigos e familiares?</h3>
+          <label><input type="radio" name="q9" value="a"> Sim</label>
+          <label><input type="radio" name="q9" value="b"> Não</label>
+        </div>
+        <div class="survey-navigation">
+          <button class="btn-prev" onclick="prevStep(8)">Voltar</button>
+          <button class="btn-next" onclick="nextStep(10)">Próximo</button>
+        </div>
+      </div>
+
+      <!-- Passo 10 -->
+      <div class="survey-step" id="step10">
+        <div class="survey-question">
+          <h3>10. Qual é o seu momento favorito para consumir chocolate?</h3>
+          <label><input type="radio" name="q10" value="a"> Café da manhã</label>
+          <label><input type="radio" name="q10" value="b"> Lanche da tarde</label>
+          <label><input type="radio" name="q10" value="c"> Sobremesa</label>
+          <label><input type="radio" name="q10" value="d"> Qualquer momento</label>
+        </div>
+        <div class="survey-navigation">
+          <button class="btn-prev" onclick="prevStep(9)">Voltar</button>
+          <button class="btn-submit" onclick="submitSurvey()">Enviar</button>
+        </div>
+      </div>
+
+      <!-- Mensagem de resultado -->
+      <div class="result-message" id="result-message">
+        <h2>Parabéns!</h2>
+        <p>Você ganhou um Ovo de Páscoa grátis da Cacau Show!</p>
+        <button class="btn-home" onclick="window.location.href='recompensa.html'">RESGATAR RECOMPENSA!</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let currentStep = 1;
+
+    function nextStep(step) {
+      if (currentStep < 10) {
+        document.getElementById(`step${currentStep}`).classList.remove('active');
+        currentStep = step;
+        document.getElementById(`step${currentStep}`).classList.add('active');
+      }
+    }
+
+    function prevStep(step) {
+      if (currentStep > 1) {
+        document.getElementById(`step${currentStep}`).classList.remove('active');
+        currentStep = step;
+        document.getElementById(`step${currentStep}`).classList.add('active');
+      }
+    }
+
+    function submitSurvey() {
+      // Oculta o formulário e exibe a mensagem de resultado
+      document.getElementById(`step${currentStep}`).classList.remove('active');
+      document.getElementById('result-message').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
